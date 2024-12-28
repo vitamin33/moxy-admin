@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "ec1010cc990e207dd06b4b7d66c8992d"
-application_url = "https://example.com/"
+application_url = "https://prix-gp-outlet-sink.trycloudflare.com"
 embedded = true
 name = "moxy_admin"
 handle = "moxy_admin-1"
@@ -22,7 +22,15 @@ api_version = "2024-10"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://prix-gp-outlet-sink.trycloudflare.com/auth/callback",
+  "https://prix-gp-outlet-sink.trycloudflare.com/auth/shopify/callback",
+  "https://prix-gp-outlet-sink.trycloudflare.com/api/auth/callback"
+]
 
 [pos]
 embedded = false
+
+[build]
+dev_store_url = "moxy-admin.myshopify.com"
+automatically_update_urls_on_dev = true
