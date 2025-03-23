@@ -33,3 +33,69 @@ export const unauthenticated = shopify.unauthenticated;
 export const login = shopify.login;
 export const registerWebhooks = shopify.registerWebhooks;
 export const sessionStorage = shopify.sessionStorage;
+
+// ORDERS
+type NodeResponse = {
+  node: {
+    id: string;
+    name: string;
+    totalPriceSet: {
+      presentmentMoney: {
+        amount: string;
+        currencyCode: string;
+      };
+    };
+    customer?: {
+      firstName: string;
+    };
+    createdAt: string;
+  };
+};
+export const getOrders = async (admin: any) => {
+  const query = `
+    {
+      orders(first: 10) {
+        edges {
+          node {
+            id
+            name
+            totalPriceSet {
+              presentmentMoney {
+                amount
+                currencyCode
+              }
+            }
+            customer {
+              firstName
+            }
+            createdAt
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    // Send the GraphQL query
+    const response = await admin.graphql(query);
+
+    // Check if the response is ok
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    // Parse the JSON from the response
+    const data = await response.json();
+
+    // Log the parsed data for debugging
+    console.log("Parsed Response JSON:", data);
+
+    // Access the orders data
+    return data.data.orders.edges.map(
+      (edge: { node: NodeResponse }) => edge.node,
+    );
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    throw error;
+  }
+};

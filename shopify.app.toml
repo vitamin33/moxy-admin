@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 client_id = "ec1010cc990e207dd06b4b7d66c8992d"
-application_url = "https://prix-gp-outlet-sink.trycloudflare.com"
+application_url = "https://illustration-span-plugin-shine.trycloudflare.com"
 embedded = true
-name = "moxy_admin"
+name = "Moxy Admin"
 handle = "moxy_admin-1"
 
 [webhooks]
@@ -19,13 +19,13 @@ api_version = "2024-10"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "read_orders,write_orders,read_products,read_customers,read_fulfillments,write_fulfillments,read_discounts,write_discounts,read_shipping,write_shipping"
 
 [auth]
 redirect_urls = [
-  "https://prix-gp-outlet-sink.trycloudflare.com/auth/callback",
-  "https://prix-gp-outlet-sink.trycloudflare.com/auth/shopify/callback",
-  "https://prix-gp-outlet-sink.trycloudflare.com/api/auth/callback"
+  "https://illustration-span-plugin-shine.trycloudflare.com/auth/callback",
+  "https://illustration-span-plugin-shine.trycloudflare.com/auth/shopify/callback",
+  "https://illustration-span-plugin-shine.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
@@ -34,3 +34,4 @@ embedded = false
 [build]
 dev_store_url = "moxy-admin.myshopify.com"
 automatically_update_urls_on_dev = true
+include_config_on_deploy = true
